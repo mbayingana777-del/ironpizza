@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Iron Slice Pizza | Pittsburgh, PA</title>
+<meta name="description" content="Iron Slice Pizza — New York-style pies, Detroit squares, wings, and late-night slices. Pittsburgh, PA."/>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --blue-bg:#eef3ff;
+  --blue:#2455ff;
+  --blue2:#1437c9;
+  --ink:#0b1220;
+  --muted:#5b6472;
+  --max:1200px;
+
+  --chipotle-brown:#3a2416;
+  --line:rgba(11,18,32,.10);
+
+  --card:#ffffff;
+  --shadow:0 18px 50px rgba(2,6,23,.10);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--ink);
+  background:var(--blue-bg);
+}
+a{text-decoration:none;color:inherit}
+.wrap{width:min(var(--max),92%);margin:auto}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:10;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(140%) blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:14px 0;
+}
+.brand{display:flex;align-items:center;gap:12px;min-width:220px;}
+.logo{height:44px;display:block}
+
+.nav{display:flex;align-items:center;gap:28px;}
+.nav a{
+  font-family:Oswald, system-ui, sans-serif;
+  font-weight:700;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  color:var(--chipotle-brown);
+  font-size:18px;
+}
+.nav a:hover{opacity:.75}
+
+.right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:220px;
+  justify-content:flex-end;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#fff;
+  font-weight:800;
+  font-size:14px;
+  transition:140ms ease;
+}
+.pill.primary{background:var(--blue);border-color:transparent;color:#fff;}
+.pill.primary:hover{background:var(--blue2)}
+.pill:hover{transform:translateY(-1px)}
+
+/* ✅ HERO SLIDESHOW */
+.hero-slider{
+  position:relative;
+  height:70vh;
+  min-height:420px;
+  overflow:hidden;
+  background:#0b1220;
+}
+.slide{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity .8s ease;
+  transform:translateZ(0);
+}
+.slide::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.55));
+}
+.slide.active{opacity:1;z-index:1;}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:#fff;
+  padding:24px;
+}
+.hero-content h1{
+  font-family:Oswald, system-ui, sans-serif;
+  font-size:clamp(42px, 6vw, 90px);
+  margin:0 0 12px;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  text-shadow:0 12px 40px rgba(0,0,0,.55);
+}
+.hero-content p{
+  font-size:18px;
+  font-weight:800;
+  max-width:560px;
+  margin:0 0 22px;
+  color:rgba(255,255,255,.92);
+  text-shadow:0 10px 30px rgba(0,0,0,.45);
+}
+.hero-content .pill.primary{
+  font-size:15px;
+  padding:12px 18px;
+}
+
+/* dots */
+.hero-dots{
+  position:absolute;
+  left:50%;
+  bottom:14px;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
+  z-index:5;
+}
+.hero-dot{
+  width:10px;height:10px;border-radius:999px;
+  background:rgba(255,255,255,.45);
+  border:1px solid rgba(255,255,255,.35);
+}
+.hero-dot.active{background:#fff;}
+
+/* SECTION */
+section{padding:80px 0}
+.h2{font-size:36px;font-weight:900;margin:0 0 10px}
+.sub{color:var(--muted);font-weight:600}
+
+/* CATEGORY GRID (Chipotle-style big cards) */
+.category-shell{
+  background:var(--card);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.category-head{
+  padding:20px 18px;
+  border-bottom:1px solid var(--line);
+}
+.category-head .title{
+  font-family:Oswald, system-ui, sans-serif;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  font-size:20px;
+  font-weight:700;
+  margin:0 0 6px;
+}
+.category-head .note{color:var(--muted);font-weight:600;font-size:14px;margin:0}
+
+.category-grid{
+  padding:18px;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:18px;
+}
+.cat-card{
+  display:block;
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+  border:1px solid var(--line);
+  box-shadow:0 14px 34px rgba(2,6,23,.08);
+  transition:140ms ease;
+}
+.cat-card:hover{
+  transform:translateY(-2px);
+  border-color:rgba(36,85,255,.25);
+  box-shadow:0 18px 44px rgba(2,6,23,.12);
+}
+.cat-card .img{
+  height:240px;
+  background:#f3f5ff;
+  overflow:hidden;
+}
+.cat-card .img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transform:scale(1.01);
+  transition:transform .45s ease;
+}
+.cat-card:hover .img img{transform:scale(1.07)}
+.cat-card .label{
+  padding:14px 14px 6px;
+  font-size:26px;
+  font-weight:950;
+  color:var(--ink);
+}
+.cat-card .meta{
+  padding:0 14px 16px;
+  color:var(--muted);
+  font-weight:700;
+  font-size:13px;
+  line-height:1.35;
+}
+
+/* ✅ EMAIL SIGNUP */
+.signup-wrap{
+  padding:0 0 80px;
+}
+.signup-shell{
+  background:var(--card);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.signup-inner{
+  padding:20px 18px;
+  border-bottom:1px solid var(--line);
+}
+.signup-title{
+  font-family:Oswald, system-ui, sans-serif;
+  letter-spacing:.6px;
+  text-transform:uppercase;
+  font-size:20px;
+  font-weight:700;
+  margin:0 0 6px;
+}
+.signup-note{
+  margin:0;
+  color:var(--muted);
+  font-weight:600;
+  font-size:14px;
+}
+.signup-form{
+  padding:18px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.signup-input{
+  flex:1;
+  min-width:240px;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  font-weight:800;
+  outline:none;
+}
+.signup-input:focus{
+  border-color:rgba(36,85,255,.45);
+  box-shadow:0 0 0 4px rgba(36,85,255,.10);
+}
+.signup-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 16px;
+  border-radius:999px;
+  border:1px solid transparent;
+  background:var(--blue);
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+  transition:140ms ease;
+}
+.signup-btn:hover{background:var(--blue2); transform:translateY(-1px)}
+.signup-fineprint{
+  padding:0 18px 18px;
+  color:var(--muted);
+  font-weight:600;
+  font-size:12px;
+  line-height:1.4;
+}
+.signup-msg{
+  padding:0 18px 18px;
+  font-weight:800;
+  font-size:13px;
+}
+.signup-msg.ok{color:#0a7a35}
+.signup-msg.err{color:#b42318}
+
+/* FOOTER */
+footer{padding:40px 0;color:var(--muted);font-weight:600;text-align:center}
+
+/* MOBILE */
+@media(max-width:980px){
+  .nav{display:none}
+  .right{min-width:auto}
+  .category-grid{grid-template-columns:1fr}
+  .cat-card .label{font-size:24px}
+  .hero-content p{font-size:16px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap top">
+    <a class="brand" href="index.html" aria-label="Iron Slice Pizza Home">
+      <img src="assets/logo.png" class="logo" alt="Iron Slice Pizza"
+           onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%2244%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23ffffff%22/><text x=%2250%25%22 y=%2258%25%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2216%22 fill=%22%230b1220%22>Iron Slice Pizza</text></svg>';"/>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#categories">Menu</a>
+      <a href="catering.html">Catering</a>
+      <a href="rewards.html">Rewards</a>
+      <a href="locations.html">Locations</a>
+    </nav>
+
+    <div class="right">
+      <a class="pill" href="locations.html">Directions</a>
+      <a class="pill primary" href="tel:+14125550199">Call</a>
+    </div>
+  </div>
+</header>
+
+<!-- ✅ HERO SLIDESHOW -->
+<div class="hero-slider" aria-label="Featured items">
+  <div class="slide active" style="background-image:url('assets/01-pizza-pepperoni.png')">
+    <div class="hero-content">
+      <h1>HOT PEPPERONI SLICES</h1>
+      <p>Thin crust. Crispy edges. Real heat.</p>
+      <a href="#categories" class="pill primary">Order Now</a>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('assets/02-pizza-margherita.png')">
+    <div class="hero-content">
+      <h1>CLASSIC MARGHERITA</h1>
+      <p>Fresh basil, mozzarella, and bright sauce.</p>
+      <a href="#categories" class="pill primary">View Menu</a>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('assets/03-wings-buffalo.png')">
+    <div class="hero-content">
+      <h1>WINGS THAT SLAP</h1>
+      <p>Buffalo, garlic parm, honey hot.</p>
+      <a href="#categories" class="pill primary">Add Wings</a>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('assets/04-soda-cold.png')">
+    <div class="hero-content">
+      <h1>ICE-COLD DRINKS</h1>
+      <p>Perfect with a late-night slice.</p>
+      <a href="#categories" class="pill primary">Grab One</a>
+    </div>
+  </div>
+
+  <div class="hero-dots" aria-hidden="true">
+    <span class="hero-dot active"></span>
+    <span class="hero-dot"></span>
+    <span class="hero-dot"></span>
+    <span class="hero-dot"></span>
+  </div>
+</div>
+
+<!-- ✅ CATEGORY SELECT SECTION -->
+<section id="categories">
+  <div class="wrap">
+    <h2 class="h2">Menu</h2>
+    <p class="sub">Pick a category to see the full menu and order online.</p>
+
+    <div class="category-shell">
+      <div class="category-head">
+        <div class="title">Choose a Category</div>
+        <p class="note">Tap a card to open that category on the menu page.</p>
+      </div>
+
+      <div class="category-grid" aria-label="Menu categories">
+        <a class="cat-card" href="menu.html?cat=signature-pizzas" aria-label="Open Signature Pizzas">
+          <div class="img">
+            <img src="assets/cat-signature-pizzas.png" alt="Signature Pizzas"
+                 loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src='assets/01-pizza-pepperoni.png';">
+          </div>
+          <div class="label">Signature Pizzas</div>
+          <div class="meta">Pepperoni, margherita, meat lovers & more.</div>
+        </a>
+
+        <a class="cat-card" href="menu.html?cat=build-your-own" aria-label="Open Build Your Own">
+          <div class="img">
+            <img src="assets/cat-build-your-own.png" alt="Build Your Own"
+                 loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src='assets/02-pizza-margherita.png';">
+          </div>
+          <div class="label">Build Your Own</div>
+          <div class="meta">Pick crust, sauce, cheese, and toppings.</div>
+        </a>
+
+        <a class="cat-card" href="menu.html?cat=calzones" aria-label="Open Calzones">
+          <div class="img">
+            <img src="assets/cat-calzones.png" alt="Calzones"
+                 loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src='assets/02-pizza-margherita.png';">
+          </div>
+          <div class="label">Calzones</div>
+          <div class="meta">Stuffed, baked, and served with marinara.</div>
+        </a>
+
+        <a class="cat-card" href="menu.html?cat=wings" aria-label="Open Wings">
+          <div class="img">
+            <img src="assets/cat-wings.png" alt="Wings"
+                 loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src='assets/03-wings-buffalo.png';">
+          </div>
+          <div class="label">Wings</div>
+          <div class="meta">Buffalo, garlic parm, honey hot, BBQ.</div>
+        </a>
+
+        <a class="cat-card" href="menu.html?cat=sides" aria-label="Open Sides">
+          <div class="img">
+            <img src="assets/cat-sides.png" alt="Sides"
+                 loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src='assets/03-wings-buffalo.png';">
+          </div>
+          <div class="label">Sides</div>
+          <div class="meta">Garlic knots, fries, salads, dips.</div>
+        </a>
+
+        <a class="cat-card" href="menu.html?cat=drinks" aria-label="Open Drinks">
+          <div class="img">
+            <img src="assets/cat-drinks.png" alt="Drinks"
+                 loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src='assets/04-soda-cold.png';">
+          </div>
+          <div class="label">Drinks</div>
+          <div class="meta">Soda, tea, bottled water & more.</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ✅ EMAIL SIGNUP -->
+<div class="signup-wrap" id="signup">
+  <div class="wrap">
+    <div class="signup-shell">
+      <div class="signup-inner">
+        <div class="signup-title">Get Deals & Updates</div>
+        <p class="signup-note">Coupons, new pies, and limited-time specials.</p>
+      </div>
+
+      <form class="signup-form" id="emailSignupForm" novalidate>
+        <input
+          class="signup-input"
+          id="emailInput"
+          type="email"
+          inputmode="email"
+          autocomplete="email"
+          placeholder="Enter your email"
+          aria-label="Email address"
+          required
+        />
+        <button class="signup-btn" type="submit">Sign Up</button>
+      </form>
+
+      <div class="signup-msg" id="signupMsg" aria-live="polite"></div>
+
+      <div class="signup-fineprint">
+        No spam. Just pizza deals and the occasional late-night drop.
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © Iron Slice Pizza · 212 Liberty Ave, Pittsburgh PA · (412) 555-0199
+</footer>
+
+<!-- ✅ HERO SLIDESHOW JS -->
+<script>
+(function(){
+  const slides = document.querySelectorAll(".hero-slider .slide");
+  const dots = document.querySelectorAll(".hero-slider .hero-dot");
+  if(!slides.length) return;
+
+  let current = 0;
+  const INTERVAL_MS = 5000;
+
+  function setSlide(i){
+    slides[current].classList.remove("active");
+    if(dots[current]) dots[current].classList.remove("active");
+
+    current = i;
+
+    slides[current].classList.add("active");
+    if(dots[current]) dots[current].classList.add("active");
+  }
+
+  setInterval(() => {
+    setSlide((current + 1) % slides.length);
+  }, INTERVAL_MS);
+})();
+</script>
+
+<!-- ✅ EMAIL SIGNUP JS -->
+<script>
+(function(){
+  // Change to your real inbox if you want signups emailed to you.
+  const DESTINATION_EMAIL = "hello@ironslicepizza.com";
+
+  const form = document.getElementById("emailSignupForm");
+  const input = document.getElementById("emailInput");
+  const msg = document.getElementById("signupMsg");
+
+  function setMsg(text, ok){
+    msg.textContent = text;
+    msg.className = "signup-msg " + (ok ? "ok" : "err");
+  }
+
+  function isValidEmail(email){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(email).trim());
+  }
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    const email = (input.value || "").trim();
+
+    if(!isValidEmail(email)){
+      setMsg("Please enter a valid email address.", false);
+      input.focus();
+      return;
+    }
+
+    const subject = encodeURIComponent("Email Signup - Iron Slice Pizza");
+    const body = encodeURIComponent("Please add this email to the list:\n\n" + email + "\n");
+    window.location.href = `mailto:${DESTINATION_EMAIL}?subject=${subject}&body=${body}`;
+
+    setMsg("Thanks! You’re all set.", true);
+    form.reset();
+  });
+})();
+</script>
+
+</body>
+</html>
