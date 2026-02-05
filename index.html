@@ -14,19 +14,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
+/* =========================
+   CHIPOTLE-LEAN CLEAN THEME
+   (crisp borders, white bg, tight type)
+========================= */
 :root{
-  --blue-bg:#eef3ff;
-  --blue:#2455ff;
-  --blue2:#1437c9;
+  --bg:#ffffff;
   --ink:#0b1220;
   --muted:#5b6472;
-  --max:1200px;
 
-  --brand-brown:#3a2416; /* swap per brand */
-  --line:rgba(11,18,32,.10);
+  --accent:#7b2d1a;      /* deep warm */
+  --accent2:#5f1f12;
+
+  --max:1180px;
+  --line:rgba(11,18,32,.12);
 
   --card:#ffffff;
-  --shadow:0 18px 50px rgba(2,6,23,.10);
+  --shadow:none;         /* remove soft shadows */
+  --radius:12px;         /* sharper corners */
 }
 
 *{box-sizing:border-box}
@@ -35,7 +40,7 @@ body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   color:var(--ink);
-  background:var(--blue-bg);
+  background:var(--bg);
 }
 a{text-decoration:none;color:inherit}
 .wrap{width:min(var(--max),92%);margin:auto}
@@ -43,9 +48,9 @@ a{text-decoration:none;color:inherit}
 /* HEADER */
 header{
   position:sticky;top:0;z-index:10;
-  background:rgba(255,255,255,.92);
-  backdrop-filter:saturate(140%) blur(10px);
+  background:#fff;
   border-bottom:1px solid var(--line);
+  backdrop-filter:none;
 }
 .top{
   display:flex;
@@ -57,16 +62,16 @@ header{
 .brand{display:flex;align-items:center;gap:12px;min-width:220px;}
 .logo{height:44px;display:block}
 
-.nav{display:flex;align-items:center;gap:26px;}
+.nav{display:flex;align-items:center;gap:24px;}
 .nav a{
   font-family:Oswald, system-ui, sans-serif;
   font-weight:700;
-  letter-spacing:.6px;
+  letter-spacing:.08em;
   text-transform:uppercase;
-  color:var(--brand-brown);
-  font-size:18px;
+  color:var(--ink);
+  font-size:16px;
 }
-.nav a:hover{opacity:.75}
+.nav a:hover{opacity:.72}
 
 .right{
   display:flex;
@@ -75,6 +80,8 @@ header{
   min-width:220px;
   justify-content:flex-end;
 }
+
+/* Buttons (crisp) */
 .pill{
   display:inline-flex;
   align-items:center;
@@ -83,12 +90,16 @@ header{
   border-radius:999px;
   border:1px solid var(--line);
   background:#fff;
-  font-weight:800;
-  font-size:14px;
+  font-weight:850;
+  font-size:13px;
   transition:140ms ease;
 }
-.pill.primary{background:var(--blue);border-color:transparent;color:#fff;}
-.pill.primary:hover{background:var(--blue2)}
+.pill.primary{
+  background:var(--accent);
+  border-color:transparent;
+  color:#fff;
+}
+.pill.primary:hover{background:var(--accent2)}
 .pill:hover{transform:translateY(-1px)}
 
 /* HERO SLIDESHOW */
@@ -132,12 +143,12 @@ header{
   font-family:Oswald, system-ui, sans-serif;
   font-size:clamp(42px, 6vw, 90px);
   margin:0 0 12px;
-  letter-spacing:.6px;
+  letter-spacing:.06em;
   text-transform:uppercase;
   text-shadow:0 12px 40px rgba(0,0,0,.55);
 }
 .hero-content p{
-  font-size:18px;
+  font-size:16px;
   font-weight:800;
   max-width:560px;
   margin:0 0 22px;
@@ -145,7 +156,7 @@ header{
   text-shadow:0 10px 30px rgba(0,0,0,.45);
 }
 .hero-content .pill.primary{
-  font-size:15px;
+  font-size:14px;
   padding:12px 18px;
 }
 
@@ -161,21 +172,31 @@ header{
 }
 .hero-dot{
   width:10px;height:10px;border-radius:999px;
-  background:rgba(255,255,255,.45);
-  border:1px solid rgba(255,255,255,.35);
+  background:rgba(255,255,255,.40);
+  border:1px solid rgba(255,255,255,.28);
 }
 .hero-dot.active{background:#fff;}
 
 /* SECTION */
-section{padding:80px 0}
-.h2{font-size:36px;font-weight:900;margin:0 0 10px}
-.sub{color:var(--muted);font-weight:600}
+section{padding:64px 0}
+.h2{
+  font-size:40px;
+  font-weight:950;
+  letter-spacing:-.02em;
+  margin:0 0 10px
+}
+.sub{
+  color:var(--muted);
+  font-weight:650;
+  max-width:58ch;
+}
 
-/* CARD SHELL */
+/* CARD SHELL (crisp) */
 .shell{
   background:var(--card);
-  border-radius:18px;
-  box-shadow:var(--shadow);
+  border-radius:var(--radius);
+  border:1px solid var(--line);
+  box-shadow:none;
   overflow:hidden;
 }
 .shell-head{
@@ -184,13 +205,13 @@ section{padding:80px 0}
 }
 .shell-title{
   font-family:Oswald, system-ui, sans-serif;
-  letter-spacing:.6px;
+  letter-spacing:.10em;
   text-transform:uppercase;
-  font-size:20px;
+  font-size:18px;
   font-weight:700;
   margin:0 0 6px;
 }
-.shell-note{color:var(--muted);font-weight:600;font-size:14px;margin:0}
+.shell-note{color:var(--muted);font-weight:650;font-size:14px;margin:0}
 
 /* CATEGORY GRID */
 .category-grid{
@@ -201,19 +222,34 @@ section{padding:80px 0}
 }
 .cat-card{
   display:block;
-  border-radius:16px;
+  border-radius:var(--radius);
   overflow:hidden;
   background:#fff;
   border:1px solid var(--line);
-  box-shadow:0 14px 34px rgba(2,6,23,.08);
+  box-shadow:none;
   transition:140ms ease;
 }
 .cat-card:hover{
   transform:translateY(-2px);
-  border-color:rgba(36,85,255,.25);
-  box-shadow:0 18px 44px rgba(2,6,23,.12);
+  border-color:rgba(123,45,26,.35);
 }
-.cat-card .img{height:240px;background:#f3f5ff;overflow:hidden;}
+.cat-card .img{
+  height:160px;                 /* crisp: shorter image area */
+  background:#f6f7f9;           /* cleaner gray */
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+.cat-card .img::after{
+  content:"PHOTO";
+  font-weight:900;
+  letter-spacing:.18em;
+  font-size:12px;
+  color:rgba(11,18,32,.35);
+  text-transform:uppercase;
+}
 .cat-card .img img{
   width:100%;
   height:100%;
@@ -222,13 +258,24 @@ section{padding:80px 0}
   transform:scale(1.01);
   transition:transform .45s ease;
 }
-.cat-card:hover .img img{transform:scale(1.07)}
-.cat-card .label{padding:14px 14px 6px;font-size:26px;font-weight:950;color:var(--ink);}
-.cat-card .meta{padding:0 14px 16px;color:var(--muted);font-weight:700;font-size:13px;line-height:1.35;}
+.cat-card:hover .img img{transform:scale(1.06)}
+.cat-card .label{
+  padding:14px 14px 6px;
+  font-size:24px;
+  font-weight:950;
+  color:var(--ink);
+}
+.cat-card .meta{
+  padding:0 14px 16px;
+  color:var(--muted);
+  font-weight:700;
+  font-size:13px;
+  line-height:1.35;
+}
 
 /* ✅ INGREDIENT TRUST SECTION */
 .trust{
-  padding:0 0 80px;
+  padding:0 0 64px;
 }
 .trust-grid{
   padding:18px;
@@ -239,13 +286,14 @@ section{padding:80px 0}
 .trust-item{
   background:#fff;
   border:1px solid var(--line);
-  border-radius:16px;
+  border-radius:var(--radius);
   padding:14px;
 }
 .trust-item b{
   display:block;
   font-weight:950;
   margin-bottom:6px;
+  letter-spacing:-.01em;
 }
 .trust-item p{
   margin:0;
@@ -263,13 +311,13 @@ section{padding:80px 0}
 
 /* SOCIAL PROOF STRIP */
 .proof{
-  padding:0 0 80px;
+  padding:0 0 64px;
 }
 .proof-body{
   padding:18px;
   display:flex;
   flex-wrap:wrap;
-  gap:12px;
+  gap:10px;
   align-items:center;
 }
 .badge{
@@ -287,7 +335,7 @@ section{padding:80px 0}
 
 /* RATINGS */
 .ratings{
-  padding:0 0 80px;
+  padding:0 0 64px;
 }
 .ratings-grid{
   padding:18px;
@@ -297,7 +345,7 @@ section{padding:80px 0}
 }
 .rating-box{
   border:1px solid var(--line);
-  border-radius:16px;
+  border-radius:var(--radius);
   background:#fff;
   padding:16px;
 }
@@ -307,7 +355,7 @@ section{padding:80px 0}
 }
 .rating-line{
   margin:8px 0 0;
-  font-weight:900;
+  font-weight:950;
 }
 .rating-sub{
   margin:6px 0 0;
@@ -323,7 +371,7 @@ section{padding:80px 0}
 }
 
 /* EMAIL SIGNUP */
-.signup-wrap{padding:0 0 80px;}
+.signup-wrap{padding:0 0 64px;}
 .signup-form{
   padding:18px;
   display:flex;
@@ -335,14 +383,14 @@ section{padding:80px 0}
   flex:1;
   min-width:240px;
   padding:12px 14px;
-  border-radius:12px;
+  border-radius:var(--radius);
   border:1px solid var(--line);
-  font-weight:800;
+  font-weight:850;
   outline:none;
 }
 .signup-input:focus{
-  border-color:rgba(36,85,255,.45);
-  box-shadow:0 0 0 4px rgba(36,85,255,.10);
+  border-color:rgba(123,45,26,.40);
+  box-shadow:0 0 0 4px rgba(123,45,26,.10);
 }
 .signup-btn{
   display:inline-flex;
@@ -351,15 +399,25 @@ section{padding:80px 0}
   padding:12px 16px;
   border-radius:999px;
   border:1px solid transparent;
-  background:var(--blue);
+  background:var(--accent);
   color:#fff;
-  font-weight:900;
+  font-weight:950;
   cursor:pointer;
   transition:140ms ease;
 }
-.signup-btn:hover{background:var(--blue2); transform:translateY(-1px)}
-.signup-fineprint{padding:0 18px 18px;color:var(--muted);font-weight:600;font-size:12px;line-height:1.4;}
-.signup-msg{padding:0 18px 18px;font-weight:800;font-size:13px;}
+.signup-btn:hover{background:var(--accent2); transform:translateY(-1px)}
+.signup-fineprint{
+  padding:0 18px 18px;
+  color:var(--muted);
+  font-weight:650;
+  font-size:12px;
+  line-height:1.4;
+}
+.signup-msg{
+  padding:0 18px 18px;
+  font-weight:850;
+  font-size:13px;
+}
 .signup-msg.ok{color:#0a7a35}
 .signup-msg.err{color:#b42318}
 
@@ -367,10 +425,10 @@ section{padding:80px 0}
 footer{
   padding:40px 0;
   color:var(--muted);
-  font-weight:600;
+  font-weight:650;
   text-align:center;
   border-top:1px solid var(--line);
-  background:rgba(255,255,255,.7);
+  background:#fff;
 }
 
 /* MOBILE */
@@ -380,8 +438,8 @@ footer{
   .category-grid{grid-template-columns:1fr}
   .trust-grid{grid-template-columns:1fr}
   .ratings-grid{grid-template-columns:1fr}
-  .cat-card .label{font-size:24px}
-  .hero-content p{font-size:16px}
+  .cat-card .label{font-size:22px}
+  .hero-content p{font-size:15px}
 }
 </style>
 </head>
@@ -469,7 +527,8 @@ footer{
       <div class="category-grid" aria-label="Menu categories">
         <a class="cat-card" href="menu.html?cat=signature-pizzas" aria-label="Open Signature Pizzas">
           <div class="img">
-            <img src="assets/cat-signature-pizzas.png" alt="Signature Pizzas" loading="lazy" decoding="async"
+            <img src="assets/cat-signature-pizzas.png" alt="Signature Pizzas"
+                 loading="lazy" decoding="async"
                  onerror="this.onerror=null;this.src='assets/01-pizza-pepperoni.png';">
           </div>
           <div class="label">Signature Pizzas</div>
@@ -478,7 +537,8 @@ footer{
 
         <a class="cat-card" href="menu.html?cat=build-your-own" aria-label="Open Build Your Own">
           <div class="img">
-            <img src="assets/cat-build-your-own.png" alt="Build Your Own" loading="lazy" decoding="async"
+            <img src="assets/cat-build-your-own.png" alt="Build Your Own"
+                 loading="lazy" decoding="async"
                  onerror="this.onerror=null;this.src='assets/02-pizza-margherita.png';">
           </div>
           <div class="label">Build Your Own</div>
@@ -487,7 +547,8 @@ footer{
 
         <a class="cat-card" href="menu.html?cat=wings" aria-label="Open Wings">
           <div class="img">
-            <img src="assets/cat-wings.png" alt="Wings" loading="lazy" decoding="async"
+            <img src="assets/cat-wings.png" alt="Wings"
+                 loading="lazy" decoding="async"
                  onerror="this.onerror=null;this.src='assets/03-wings-buffalo.png';">
           </div>
           <div class="label">Wings</div>
@@ -496,7 +557,8 @@ footer{
 
         <a class="cat-card" href="menu.html?cat=sides" aria-label="Open Sides">
           <div class="img">
-            <img src="assets/cat-sides.png" alt="Sides" loading="lazy" decoding="async"
+            <img src="assets/cat-sides.png" alt="Sides"
+                 loading="lazy" decoding="async"
                  onerror="this.onerror=null;this.src='assets/03-wings-buffalo.png';">
           </div>
           <div class="label">Sides</div>
@@ -505,7 +567,8 @@ footer{
 
         <a class="cat-card" href="menu.html?cat=drinks" aria-label="Open Drinks">
           <div class="img">
-            <img src="assets/cat-drinks.png" alt="Drinks" loading="lazy" decoding="async"
+            <img src="assets/cat-drinks.png" alt="Drinks"
+                 loading="lazy" decoding="async"
                  onerror="this.onerror=null;this.src='assets/04-soda-cold.png';">
           </div>
           <div class="label">Drinks</div>
@@ -514,7 +577,8 @@ footer{
 
         <a class="cat-card" href="menu.html?cat=desserts" aria-label="Open Desserts">
           <div class="img">
-            <img src="assets/cat-desserts.png" alt="Desserts" loading="lazy" decoding="async"
+            <img src="assets/cat-desserts.png" alt="Desserts"
+                 loading="lazy" decoding="async"
                  onerror="this.onerror=null;this.src='assets/02-pizza-margherita.png';">
           </div>
           <div class="label">Desserts</div>
@@ -726,4 +790,3 @@ const TEMPLATE = {
 
 </body>
 </html>
-
