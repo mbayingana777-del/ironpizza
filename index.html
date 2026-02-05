@@ -3,6 +3,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<!-- =========================
+  MASTER TEMPLATE SETTINGS
+  Replace these per client
+========================= -->
 <title>Iron Slice Pizza | Pittsburgh, PA</title>
 <meta name="description" content="Iron Slice Pizza — New York-style pies, Detroit squares, wings, and late-night slices. Pittsburgh, PA."/>
 
@@ -17,7 +22,7 @@
   --muted:#5b6472;
   --max:1200px;
 
-  --chipotle-brown:#3a2416;
+  --brand-brown:#3a2416; /* swap per brand */
   --line:rgba(11,18,32,.10);
 
   --card:#ffffff;
@@ -52,13 +57,13 @@ header{
 .brand{display:flex;align-items:center;gap:12px;min-width:220px;}
 .logo{height:44px;display:block}
 
-.nav{display:flex;align-items:center;gap:28px;}
+.nav{display:flex;align-items:center;gap:26px;}
 .nav a{
   font-family:Oswald, system-ui, sans-serif;
   font-weight:700;
   letter-spacing:.6px;
   text-transform:uppercase;
-  color:var(--chipotle-brown);
+  color:var(--brand-brown);
   font-size:18px;
 }
 .nav a:hover{opacity:.75}
@@ -86,7 +91,7 @@ header{
 .pill.primary:hover{background:var(--blue2)}
 .pill:hover{transform:translateY(-1px)}
 
-/* ✅ HERO SLIDESHOW */
+/* HERO SLIDESHOW */
 .hero-slider{
   position:relative;
   height:70vh;
@@ -166,18 +171,18 @@ section{padding:80px 0}
 .h2{font-size:36px;font-weight:900;margin:0 0 10px}
 .sub{color:var(--muted);font-weight:600}
 
-/* CATEGORY GRID (Chipotle-style big cards) */
-.category-shell{
+/* CARD SHELL */
+.shell{
   background:var(--card);
   border-radius:18px;
   box-shadow:var(--shadow);
   overflow:hidden;
 }
-.category-head{
+.shell-head{
   padding:20px 18px;
   border-bottom:1px solid var(--line);
 }
-.category-head .title{
+.shell-title{
   font-family:Oswald, system-ui, sans-serif;
   letter-spacing:.6px;
   text-transform:uppercase;
@@ -185,8 +190,9 @@ section{padding:80px 0}
   font-weight:700;
   margin:0 0 6px;
 }
-.category-head .note{color:var(--muted);font-weight:600;font-size:14px;margin:0}
+.shell-note{color:var(--muted);font-weight:600;font-size:14px;margin:0}
 
+/* CATEGORY GRID */
 .category-grid{
   padding:18px;
   display:grid;
@@ -207,11 +213,7 @@ section{padding:80px 0}
   border-color:rgba(36,85,255,.25);
   box-shadow:0 18px 44px rgba(2,6,23,.12);
 }
-.cat-card .img{
-  height:240px;
-  background:#f3f5ff;
-  overflow:hidden;
-}
+.cat-card .img{height:240px;background:#f3f5ff;overflow:hidden;}
 .cat-card .img img{
   width:100%;
   height:100%;
@@ -221,48 +223,72 @@ section{padding:80px 0}
   transition:transform .45s ease;
 }
 .cat-card:hover .img img{transform:scale(1.07)}
-.cat-card .label{
-  padding:14px 14px 6px;
-  font-size:26px;
-  font-weight:950;
-  color:var(--ink);
+.cat-card .label{padding:14px 14px 6px;font-size:26px;font-weight:950;color:var(--ink);}
+.cat-card .meta{padding:0 14px 16px;color:var(--muted);font-weight:700;font-size:13px;line-height:1.35;}
+
+/* SOCIAL PROOF STRIP */
+.proof{
+  padding:0 0 80px;
 }
-.cat-card .meta{
-  padding:0 14px 16px;
+.proof-body{
+  padding:18px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  align-items:center;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#fff;
+  font-weight:900;
+  font-size:13px;
+}
+.badge span{color:var(--muted);font-weight:800}
+
+/* RATINGS */
+.ratings{
+  padding:0 0 80px;
+}
+.ratings-grid{
+  padding:18px;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:16px;
+}
+.rating-box{
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#fff;
+  padding:16px;
+}
+.stars{
+  font-size:18px;
+  letter-spacing:2px;
+}
+.rating-line{
+  margin:8px 0 0;
+  font-weight:900;
+}
+.rating-sub{
+  margin:6px 0 0;
   color:var(--muted);
   font-weight:700;
   font-size:13px;
-  line-height:1.35;
+}
+.rating-actions{
+  margin-top:12px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
 }
 
-/* ✅ EMAIL SIGNUP */
-.signup-wrap{
-  padding:0 0 80px;
-}
-.signup-shell{
-  background:var(--card);
-  border-radius:18px;
-  box-shadow:var(--shadow);
-  overflow:hidden;
-}
-.signup-inner{
-  padding:20px 18px;
-  border-bottom:1px solid var(--line);
-}
-.signup-title{
-  font-family:Oswald, system-ui, sans-serif;
-  letter-spacing:.6px;
-  text-transform:uppercase;
-  font-size:20px;
-  font-weight:700;
-  margin:0 0 6px;
-}
-.signup-note{
-  margin:0;
-  color:var(--muted);
-  font-weight:600;
-  font-size:14px;
-}
+/* EMAIL SIGNUP */
+.signup-wrap{padding:0 0 80px;}
 .signup-form{
   padding:18px;
   display:flex;
@@ -297,29 +323,27 @@ section{padding:80px 0}
   transition:140ms ease;
 }
 .signup-btn:hover{background:var(--blue2); transform:translateY(-1px)}
-.signup-fineprint{
-  padding:0 18px 18px;
-  color:var(--muted);
-  font-weight:600;
-  font-size:12px;
-  line-height:1.4;
-}
-.signup-msg{
-  padding:0 18px 18px;
-  font-weight:800;
-  font-size:13px;
-}
+.signup-fineprint{padding:0 18px 18px;color:var(--muted);font-weight:600;font-size:12px;line-height:1.4;}
+.signup-msg{padding:0 18px 18px;font-weight:800;font-size:13px;}
 .signup-msg.ok{color:#0a7a35}
 .signup-msg.err{color:#b42318}
 
 /* FOOTER */
-footer{padding:40px 0;color:var(--muted);font-weight:600;text-align:center}
+footer{
+  padding:40px 0;
+  color:var(--muted);
+  font-weight:600;
+  text-align:center;
+  border-top:1px solid var(--line);
+  background:rgba(255,255,255,.7);
+}
 
 /* MOBILE */
 @media(max-width:980px){
   .nav{display:none}
   .right{min-width:auto}
   .category-grid{grid-template-columns:1fr}
+  .ratings-grid{grid-template-columns:1fr}
   .cat-card .label{font-size:24px}
   .hero-content p{font-size:16px}
 }
@@ -330,16 +354,19 @@ footer{padding:40px 0;color:var(--muted);font-weight:600;text-align:center}
 
 <header>
   <div class="wrap top">
-    <a class="brand" href="index.html" aria-label="Iron Slice Pizza Home">
-      <img src="assets/logo.png" class="logo" alt="Iron Slice Pizza"
-           onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%2244%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23ffffff%22/><text x=%2250%25%22 y=%2258%25%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2216%22 fill=%22%230b1220%22>Iron Slice Pizza</text></svg>';"/>
+    <a class="brand" href="index.html" aria-label="Home">
+      <!-- LOGO PLACEHOLDER: replace assets/logo.png later -->
+      <img src="assets/logo.png" class="logo" alt="Logo"
+           onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%2244%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23ffffff%22/><text x=%2250%25%22 y=%2258%25%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2216%22 fill=%22%230b1220%22>LOGO</text></svg>';"/>
     </a>
 
     <nav class="nav" aria-label="Primary">
       <a href="#categories">Menu</a>
       <a href="catering.html">Catering</a>
+      <a href="deals.html">Deals</a>
       <a href="rewards.html">Rewards</a>
       <a href="locations.html">Locations</a>
+      <a href="careers.html">Careers</a>
     </nav>
 
     <div class="right">
@@ -349,7 +376,7 @@ footer{padding:40px 0;color:var(--muted);font-weight:600;text-align:center}
   </div>
 </header>
 
-<!-- ✅ HERO SLIDESHOW -->
+<!-- HERO SLIDESHOW -->
 <div class="hero-slider" aria-label="Featured items">
   <div class="slide active" style="background-image:url('assets/01-pizza-pepperoni.png')">
     <div class="hero-content">
@@ -391,23 +418,22 @@ footer{padding:40px 0;color:var(--muted);font-weight:600;text-align:center}
   </div>
 </div>
 
-<!-- ✅ CATEGORY SELECT SECTION -->
+<!-- MENU CATEGORIES -->
 <section id="categories">
   <div class="wrap">
     <h2 class="h2">Menu</h2>
     <p class="sub">Pick a category to see the full menu and order online.</p>
 
-    <div class="category-shell">
-      <div class="category-head">
-        <div class="title">Choose a Category</div>
-        <p class="note">Tap a card to open that category on the menu page.</p>
+    <div class="shell">
+      <div class="shell-head">
+        <div class="shell-title">Choose a Category</div>
+        <p class="shell-note">Tap a card to open that category on the menu page.</p>
       </div>
 
       <div class="category-grid" aria-label="Menu categories">
         <a class="cat-card" href="menu.html?cat=signature-pizzas" aria-label="Open Signature Pizzas">
           <div class="img">
-            <img src="assets/cat-signature-pizzas.png" alt="Signature Pizzas"
-                 loading="lazy" decoding="async"
+            <img src="assets/cat-signature-pizzas.png" alt="Signature Pizzas" loading="lazy" decoding="async"
                  onerror="this.onerror=null;this.src='assets/01-pizza-pepperoni.png';">
           </div>
           <div class="label">Signature Pizzas</div>
@@ -416,28 +442,16 @@ footer{padding:40px 0;color:var(--muted);font-weight:600;text-align:center}
 
         <a class="cat-card" href="menu.html?cat=build-your-own" aria-label="Open Build Your Own">
           <div class="img">
-            <img src="assets/cat-build-your-own.png" alt="Build Your Own"
-                 loading="lazy" decoding="async"
+            <img src="assets/cat-build-your-own.png" alt="Build Your Own" loading="lazy" decoding="async"
                  onerror="this.onerror=null;this.src='assets/02-pizza-margherita.png';">
           </div>
           <div class="label">Build Your Own</div>
           <div class="meta">Pick crust, sauce, cheese, and toppings.</div>
         </a>
 
-        <a class="cat-card" href="menu.html?cat=calzones" aria-label="Open Calzones">
-          <div class="img">
-            <img src="assets/cat-calzones.png" alt="Calzones"
-                 loading="lazy" decoding="async"
-                 onerror="this.onerror=null;this.src='assets/02-pizza-margherita.png';">
-          </div>
-          <div class="label">Calzones</div>
-          <div class="meta">Stuffed, baked, and served with marinara.</div>
-        </a>
-
         <a class="cat-card" href="menu.html?cat=wings" aria-label="Open Wings">
           <div class="img">
-            <img src="assets/cat-wings.png" alt="Wings"
-                 loading="lazy" decoding="async"
+            <img src="assets/cat-wings.png" alt="Wings" loading="lazy" decoding="async"
                  onerror="this.onerror=null;this.src='assets/03-wings-buffalo.png';">
           </div>
           <div class="label">Wings</div>
@@ -446,8 +460,7 @@ footer{padding:40px 0;color:var(--muted);font-weight:600;text-align:center}
 
         <a class="cat-card" href="menu.html?cat=sides" aria-label="Open Sides">
           <div class="img">
-            <img src="assets/cat-sides.png" alt="Sides"
-                 loading="lazy" decoding="async"
+            <img src="assets/cat-sides.png" alt="Sides" loading="lazy" decoding="async"
                  onerror="this.onerror=null;this.src='assets/03-wings-buffalo.png';">
           </div>
           <div class="label">Sides</div>
@@ -456,56 +469,118 @@ footer{padding:40px 0;color:var(--muted);font-weight:600;text-align:center}
 
         <a class="cat-card" href="menu.html?cat=drinks" aria-label="Open Drinks">
           <div class="img">
-            <img src="assets/cat-drinks.png" alt="Drinks"
-                 loading="lazy" decoding="async"
+            <img src="assets/cat-drinks.png" alt="Drinks" loading="lazy" decoding="async"
                  onerror="this.onerror=null;this.src='assets/04-soda-cold.png';">
           </div>
           <div class="label">Drinks</div>
           <div class="meta">Soda, tea, bottled water & more.</div>
+        </a>
+
+        <a class="cat-card" href="menu.html?cat=desserts" aria-label="Open Desserts">
+          <div class="img">
+            <img src="assets/cat-desserts.png" alt="Desserts" loading="lazy" decoding="async"
+                 onerror="this.onerror=null;this.src='assets/02-pizza-margherita.png';">
+          </div>
+          <div class="label">Desserts</div>
+          <div class="meta">Cookies, brownies, sweet finishes.</div>
         </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ✅ EMAIL SIGNUP -->
+<!-- IMPORTANT PEOPLE TRUST COPY -->
+<div class="proof">
+  <div class="wrap">
+    <div class="shell">
+      <div class="shell-head">
+        <div class="shell-title">Trusted by locals, teams, and late-night legends</div>
+        <p class="shell-note">Drop in for a slice — or feed a whole crew.</p>
+      </div>
+
+      <div class="proof-body" aria-label="Social proof">
+        <div class="badge">UPMC <span>(placeholder)</span></div>
+        <div class="badge">Google <span>(placeholder)</span></div>
+        <div class="badge">University of Pittsburgh <span>(placeholder)</span></div>
+        <div class="badge">Duquesne <span>(placeholder)</span></div>
+        <div class="badge">Steelers Fans <span>(placeholder)</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SIMPLE RATING (LINKED TO YELP) -->
+<div class="ratings" id="ratings">
+  <div class="wrap">
+    <div class="shell">
+      <div class="shell-head">
+        <div class="shell-title">Real reviews</div>
+        <p class="shell-note">Tap to read more and leave a rating.</p>
+      </div>
+
+      <div class="ratings-grid">
+        <div class="rating-box">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <div class="rating-line">4.7 on Yelp</div>
+          <div class="rating-sub">Based on recent customer reviews (placeholder — swap to real rating).</div>
+          <div class="rating-actions">
+            <a class="pill primary" href="#" id="yelpLink" target="_blank" rel="noopener">Open Yelp</a>
+            <a class="pill" href="#" id="leaveReviewLink" target="_blank" rel="noopener">Leave a Review</a>
+          </div>
+        </div>
+
+        <div class="rating-box">
+          <div class="rating-line">Fast way to boost trust</div>
+          <div class="rating-sub">
+            Put this section above the footer on every site. It’s a “proof anchor” people look for before ordering.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EMAIL SIGNUP -->
 <div class="signup-wrap" id="signup">
   <div class="wrap">
-    <div class="signup-shell">
-      <div class="signup-inner">
-        <div class="signup-title">Get Deals & Updates</div>
-        <p class="signup-note">Coupons, new pies, and limited-time specials.</p>
+    <div class="shell">
+      <div class="shell-head">
+        <div class="shell-title">Get Deals & Updates</div>
+        <p class="shell-note">Coupons, new items, and limited-time specials.</p>
       </div>
 
       <form class="signup-form" id="emailSignupForm" novalidate>
-        <input
-          class="signup-input"
-          id="emailInput"
-          type="email"
-          inputmode="email"
-          autocomplete="email"
-          placeholder="Enter your email"
-          aria-label="Email address"
-          required
-        />
+        <input class="signup-input" id="emailInput" type="email" inputmode="email" autocomplete="email"
+               placeholder="Enter your email" aria-label="Email address" required />
         <button class="signup-btn" type="submit">Sign Up</button>
       </form>
 
       <div class="signup-msg" id="signupMsg" aria-live="polite"></div>
 
       <div class="signup-fineprint">
-        No spam. Just pizza deals and the occasional late-night drop.
+        No spam. Just legit deals and occasional drops.
       </div>
     </div>
   </div>
 </div>
 
 <footer>
-  © Iron Slice Pizza · 212 Liberty Ave, Pittsburgh PA · (412) 555-0199
+  © Iron Slice Pizza · 212 Liberty Ave, Pittsburgh PA · (412) 555-0199 ·
+  <a href="careers.html">Careers</a>
 </footer>
 
-<!-- ✅ HERO SLIDESHOW JS -->
 <script>
+/* =========================
+  MASTER TEMPLATE SETTINGS
+  Replace per client
+========================= */
+const TEMPLATE = {
+  destinationEmail: "hello@ironslicepizza.com",
+  yelpUrl: "https://www.yelp.com/",          // TODO: replace with the real Yelp listing URL
+  yelpReviewUrl: "https://www.yelp.com/",    // TODO: replace with direct review URL if you have it
+};
+
+/* HERO SLIDESHOW */
 (function(){
   const slides = document.querySelectorAll(".hero-slider .slide");
   const dots = document.querySelectorAll(".hero-slider .hero-dot");
@@ -524,18 +599,19 @@ footer{padding:40px 0;color:var(--muted);font-weight:600;text-align:center}
     if(dots[current]) dots[current].classList.add("active");
   }
 
-  setInterval(() => {
-    setSlide((current + 1) % slides.length);
-  }, INTERVAL_MS);
+  setInterval(() => setSlide((current + 1) % slides.length), INTERVAL_MS);
 })();
-</script>
 
-<!-- ✅ EMAIL SIGNUP JS -->
-<script>
+/* RATINGS LINKS */
 (function(){
-  // Change to your real inbox if you want signups emailed to you.
-  const DESTINATION_EMAIL = "hello@ironslicepizza.com";
+  const yelpLink = document.getElementById("yelpLink");
+  const leaveReview = document.getElementById("leaveReviewLink");
+  if(yelpLink) yelpLink.href = TEMPLATE.yelpUrl;
+  if(leaveReview) leaveReview.href = TEMPLATE.yelpReviewUrl;
+})();
 
+/* EMAIL SIGNUP (mailto test version) */
+(function(){
   const form = document.getElementById("emailSignupForm");
   const input = document.getElementById("emailInput");
   const msg = document.getElementById("signupMsg");
@@ -559,9 +635,9 @@ footer{padding:40px 0;color:var(--muted);font-weight:600;text-align:center}
       return;
     }
 
-    const subject = encodeURIComponent("Email Signup - Iron Slice Pizza");
+    const subject = encodeURIComponent("Email Signup");
     const body = encodeURIComponent("Please add this email to the list:\n\n" + email + "\n");
-    window.location.href = `mailto:${DESTINATION_EMAIL}?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${TEMPLATE.destinationEmail}?subject=${subject}&body=${body}`;
 
     setMsg("Thanks! You’re all set.", true);
     form.reset();
@@ -571,3 +647,4 @@ footer{padding:40px 0;color:var(--muted);font-weight:600;text-align:center}
 
 </body>
 </html>
+
