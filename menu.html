@@ -1,0 +1,611 @@
+<!-- =========================
+  menu.html  (FULL MENU PAGE)
+  Drop this file next to index.html
+========================= -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Menu | Iron Slice Pizza</title>
+<meta name="description" content="Full menu for Iron Slice Pizza — pizzas, wings, sides, drinks, desserts."/>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== Keep same clean theme as index ===== */
+:root{
+  --bg:#ffffff;
+  --ink:#0b1220;
+  --muted:#5b6472;
+
+  --accent:#7b2d1a;
+  --accent2:#5f1f12;
+
+  --max:1180px;
+  --line:rgba(11,18,32,.12);
+
+  --card:#ffffff;
+  --shadow:none;
+  --radius:12px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+}
+a{text-decoration:none;color:inherit}
+.wrap{width:min(var(--max),92%);margin:auto}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:10;
+  background:#fff;
+  border-bottom:1px solid var(--line);
+}
+.top{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:18px;padding:14px 0;
+}
+.brand{display:flex;align-items:center;gap:12px;min-width:220px;}
+.logo{height:44px;display:block}
+.nav{display:flex;align-items:center;gap:24px;}
+.nav a{
+  font-family:Oswald, system-ui, sans-serif;
+  font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink);font-size:16px;
+}
+.nav a:hover{opacity:.72}
+.right{display:flex;align-items:center;gap:12px;min-width:220px;justify-content:flex-end;}
+
+/* Buttons */
+.pill{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:10px 14px;border-radius:999px;border:1px solid var(--line);
+  background:#fff;font-weight:850;font-size:13px;transition:140ms ease;
+}
+.pill.primary{background:var(--accent);border-color:transparent;color:#fff;}
+.pill.primary:hover{background:var(--accent2)}
+.pill:hover{transform:translateY(-1px)}
+
+/* Cut corners */
+.cut-corners{
+  border:1px solid var(--line);
+  background:#fff;
+  clip-path: polygon(
+    14px 0%, calc(100% - 14px) 0%, 100% 14px,
+    100% calc(100% - 14px), calc(100% - 14px) 100%,
+    14px 100%, 0% calc(100% - 14px), 0% 14px
+  );
+}
+
+/* Page header */
+.hero{
+  padding:36px 0 18px;
+}
+.kicker{
+  font-family:Oswald, system-ui, sans-serif;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:700;
+  font-size:14px;
+  margin:0 0 10px;
+}
+.h1{
+  font-family:Oswald, system-ui, sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  font-weight:800;
+  font-size:54px;
+  line-height:1.02;
+  margin:0 0 12px;
+}
+.sub{
+  margin:0;
+  color:var(--muted);
+  font-weight:650;
+  max-width:70ch;
+  line-height:1.5;
+}
+
+/* Top controls */
+.controls{
+  padding:18px 0 26px;
+}
+.controls-row{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.search{
+  flex:1;
+  min-width:240px;
+  padding:12px 14px;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  font-weight:800;
+  outline:none;
+}
+.search:focus{
+  border-color:rgba(123,45,26,.40);
+  box-shadow:0 0 0 4px rgba(123,45,26,.10);
+}
+.chips{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.chip{
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:999px;
+  padding:10px 12px;
+  font-weight:900;
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:140ms ease;
+}
+.chip:hover{transform:translateY(-1px)}
+.chip.active{
+  background:rgba(123,45,26,.08);
+  border-color:rgba(123,45,26,.35);
+}
+
+/* Menu layout */
+.menu{
+  padding:0 0 54px;
+}
+.menu-grid{
+  display:grid;
+  grid-template-columns: 280px 1fr;
+  gap:18px;
+}
+
+/* Sidebar */
+.sidebar{
+  position:sticky;
+  top:86px;
+  align-self:start;
+}
+.side-box{
+  padding:14px;
+}
+.side-title{
+  font-family:Oswald, system-ui, sans-serif;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  font-size:14px;
+  font-weight:700;
+  color:var(--muted);
+  margin:0 0 10px;
+}
+.side-links{
+  display:grid;
+  gap:8px;
+}
+.side-links a{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  padding:10px 10px;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  font-weight:900;
+  background:#fff;
+}
+.side-links a:hover{border-color:rgba(123,45,26,.35)}
+.count{
+  color:var(--muted);
+  font-weight:800;
+}
+
+/* Sections */
+.section{
+  margin-bottom:18px;
+}
+.section-head{
+  padding:18px;
+  border-bottom:1px solid var(--line);
+}
+.section-title{
+  font-family:Oswald, system-ui, sans-serif;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  font-size:18px;
+  font-weight:700;
+  margin:0 0 6px;
+}
+.section-note{
+  margin:0;
+  color:var(--muted);
+  font-weight:650;
+  font-size:14px;
+}
+
+/* Items */
+.items{
+  padding:18px;
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:12px;
+}
+.item{
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:14px;
+  background:#fff;
+}
+.item-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+}
+.item-name{
+  font-weight:950;
+  letter-spacing:-.01em;
+  margin:0;
+}
+.item-price{
+  font-weight:950;
+  color:var(--ink);
+  white-space:nowrap;
+}
+.item-desc{
+  margin:8px 0 0;
+  color:var(--muted);
+  font-weight:650;
+  font-size:13px;
+  line-height:1.45;
+}
+.item-tags{
+  margin-top:10px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.tag{
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* Footer */
+footer{
+  padding:40px 0;
+  color:var(--muted);
+  font-weight:650;
+  text-align:center;
+  border-top:1px solid var(--line);
+  background:#fff;
+}
+
+/* Mobile */
+@media(max-width:980px){
+  .nav{display:none}
+  .right{min-width:auto}
+  .menu-grid{grid-template-columns:1fr}
+  .sidebar{position:static;top:auto}
+  .items{grid-template-columns:1fr}
+  .h1{font-size:42px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap top">
+    <a class="brand" href="index.html" aria-label="Home">
+      <img src="assets/logo.png" class="logo" alt="Logo"
+           onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22160%22 height=%2244%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23ffffff%22/><text x=%2250%25%22 y=%2258%25%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2216%22 fill=%22%230b1220%22>LOGO</text></svg>';">
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="menu.html">Menu</a>
+      <a href="catering.html">Catering</a>
+      <a href="deals.html">Deals</a>
+      <a href="rewards.html">Rewards</a>
+      <a href="locations.html">Locations</a>
+      <a href="careers.html">Careers</a>
+    </nav>
+
+    <div class="right">
+      <a class="pill" href="locations.html">Directions</a>
+      <a class="pill primary" href="tel:+14125550199">Call</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="kicker">Full Menu</p>
+    <h1 class="h1">Menu</h1>
+    <p class="sub">Browse everything in one place. Use search to find items fast. Categories match your homepage cards.</p>
+  </div>
+</section>
+
+<section class="controls">
+  <div class="wrap">
+    <div class="controls-row">
+      <input id="searchInput" class="search" type="search" placeholder="Search the menu (e.g., pepperoni, garlic parm, brownie)" aria-label="Search menu">
+      <div class="chips" aria-label="Quick filters">
+        <button class="chip" data-filter="all" type="button">All</button>
+        <button class="chip" data-filter="popular" type="button">Popular</button>
+        <button class="chip" data-filter="spicy" type="button">Spicy</button>
+        <button class="chip" data-filter="veg" type="button">Veg</button>
+        <button class="chip" data-filter="gluten" type="button">Gluten-Free</button>
+      </div>
+      <a class="pill primary" href="#order" id="orderBtn">Order Now</a>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="order">
+  <div class="wrap">
+    <div class="menu-grid">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="cut-corners side-box">
+          <div class="side-title">Categories</div>
+          <div class="side-links" id="sideLinks">
+            <!-- populated by JS -->
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <main id="menuMain">
+        <!-- populated by JS -->
+      </main>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  © Iron Slice Pizza · 212 Liberty Ave, Pittsburgh PA · (412) 555-0199 ·
+  <a href="index.html">Home</a>
+</footer>
+
+<script>
+/* =========================
+  MENU DATA (TEMPLATE)
+  Replace names, prices, and descriptions per client.
+  Tags: popular, spicy, veg, gluten
+========================= */
+const MENU = [
+  {
+    id: "signature-pizzas",
+    title: "Signature Pizzas",
+    note: "House favorites. Add toppings or swap sauces.",
+    items: [
+      { name: "Hot Pepperoni", price: "$4.25 / slice", desc: "Crispy pepperoni, mozzarella, house sauce, chili flakes.", tags:["popular","spicy"] },
+      { name: "Margherita", price: "$22.00", desc: "Fresh basil, mozzarella, olive oil, bright tomato sauce.", tags:["popular","veg"] },
+      { name: "Meat Lovers", price: "$26.00", desc: "Pepperoni, sausage, bacon, mozzarella, house sauce.", tags:["popular"] },
+      { name: "White Pie", price: "$24.00", desc: "Garlic ricotta base, mozzarella, parmesan, herbs.", tags:["veg"] },
+      { name: "BBQ Chicken", price: "$25.00", desc: "BBQ sauce, chicken, red onion, mozzarella.", tags:["popular"] },
+      { name: "Veggie Supreme", price: "$24.00", desc: "Peppers, onions, mushrooms, olives, mozzarella.", tags:["veg"] },
+    ]
+  },
+  {
+    id: "build-your-own",
+    title: "Build Your Own",
+    note: "Pick a base, sauce, cheese, and toppings.",
+    items: [
+      { name: "10\" Personal", price: "$10.99", desc: "Choose sauce + cheese. Add toppings.", tags:["popular"] },
+      { name: "14\" Medium", price: "$16.99", desc: "Classic share size. Add toppings.", tags:["popular"] },
+      { name: "18\" Large", price: "$21.99", desc: "Big hunger. Big flavor. Add toppings.", tags:["popular"] },
+      { name: "Gluten-Free Crust", price: "+$3.00", desc: "Available on 10\" size. Ask about cross-contact.", tags:["gluten"] },
+      { name: "Sauces", price: "Varies", desc: "House red, spicy red, garlic white, BBQ.", tags:[] },
+      { name: "Toppings", price: "Varies", desc: "Pepperoni, sausage, bacon, mushrooms, peppers, onions, olives, jalapeño.", tags:[] },
+    ]
+  },
+  {
+    id: "wings",
+    title: "Wings",
+    note: "Crispy, sauced, and ready to ruin your diet.",
+    items: [
+      { name: "6 Wings", price: "$8.99", desc: "Pick a sauce: Buffalo, Garlic Parm, Honey Hot, BBQ.", tags:["popular"] },
+      { name: "12 Wings", price: "$16.99", desc: "Pick up to two sauces.", tags:["popular"] },
+      { name: "Buffalo", price: "—", desc: "Classic heat.", tags:["spicy"] },
+      { name: "Honey Hot", price: "—", desc: "Sweet then spicy.", tags:["spicy","popular"] },
+      { name: "Garlic Parm", price: "—", desc: "Savory and rich.", tags:["popular"] },
+      { name: "BBQ", price: "—", desc: "Smoky and sweet.", tags:[] },
+    ]
+  },
+  {
+    id: "sides",
+    title: "Sides",
+    note: "Add something extra.",
+    items: [
+      { name: "Garlic Knots", price: "$6.49", desc: "Warm knots + marinara.", tags:["popular","veg"] },
+      { name: "Fries", price: "$4.99", desc: "Crispy fries, salt + seasoning.", tags:["veg"] },
+      { name: "House Salad", price: "$7.99", desc: "Greens, tomato, onion, dressing.", tags:["veg"] },
+      { name: "Mozz Sticks", price: "$8.49", desc: "Crunchy outside, pull inside.", tags:["popular"] },
+      { name: "Ranch Cup", price: "$0.99", desc: "Extra dip.", tags:[] },
+      { name: "Marinara Cup", price: "$0.99", desc: "Extra sauce.", tags:["veg"] },
+    ]
+  },
+  {
+    id: "drinks",
+    title: "Drinks",
+    note: "Cold. Crisp. Necessary.",
+    items: [
+      { name: "Soda (Can)", price: "$1.99", desc: "Coke, Diet Coke, Sprite (placeholder).", tags:[] },
+      { name: "Bottled Water", price: "$1.49", desc: "Cold water.", tags:[] },
+      { name: "Iced Tea", price: "$2.49", desc: "Sweet or unsweet.", tags:[] },
+      { name: "Lemonade", price: "$2.99", desc: "Bright and clean.", tags:[] },
+    ]
+  },
+  {
+    id: "desserts",
+    title: "Desserts",
+    note: "Finish strong.",
+    items: [
+      { name: "Brownie", price: "$3.49", desc: "Fudgy and rich.", tags:["popular","veg"] },
+      { name: "Cookie", price: "$2.49", desc: "Classic soft cookie (placeholder).", tags:["veg"] },
+      { name: "Cinnamon Knots", price: "$6.99", desc: "Sweet glaze + cinnamon sugar.", tags:["popular","veg"] },
+    ]
+  }
+];
+
+/* =========================
+  RENDER MENU + SIDEBAR
+========================= */
+const menuMain = document.getElementById("menuMain");
+const sideLinks = document.getElementById("sideLinks");
+const searchInput = document.getElementById("searchInput");
+const chips = Array.from(document.querySelectorAll(".chip"));
+
+function getParam(name){
+  const url = new URL(window.location.href);
+  return url.searchParams.get(name);
+}
+
+function normalize(s){ return String(s || "").toLowerCase().trim(); }
+
+function itemMatches(item, q, filter){
+  const hay = normalize(item.name + " " + item.desc + " " + (item.tags||[]).join(" "));
+  const okQ = !q || hay.includes(q);
+  const okFilter = (filter === "all") || (item.tags || []).includes(filter);
+  return okQ && okFilter;
+}
+
+function buildCounts(){
+  const counts = {};
+  MENU.forEach(cat => counts[cat.id] = cat.items.length);
+  return counts;
+}
+
+function renderSidebar(){
+  const counts = buildCounts();
+  sideLinks.innerHTML = MENU.map(cat => `
+    <a href="#${cat.id}">
+      <span>${cat.title}</span>
+      <span class="count">${counts[cat.id]}</span>
+    </a>
+  `).join("");
+}
+
+function renderMenu({q="", filter="all"} = {}){
+  menuMain.innerHTML = MENU.map(cat => {
+    const filtered = cat.items.filter(it => itemMatches(it, q, filter));
+    const hide = filtered.length === 0;
+    const itemsHtml = filtered.map(it => `
+      <div class="item" data-tags="${(it.tags||[]).join(",")}">
+        <div class="item-top">
+          <h4 class="item-name">${it.name}</h4>
+          <div class="item-price">${it.price || ""}</div>
+        </div>
+        <p class="item-desc">${it.desc || ""}</p>
+        ${(it.tags && it.tags.length) ? `
+          <div class="item-tags">
+            ${it.tags.map(t => `<span class="tag">${t}</span>`).join("")}
+          </div>
+        ` : ``}
+      </div>
+    `).join("");
+
+    return `
+      <section class="section ${hide ? "is-hidden" : ""}" id="${cat.id}">
+        <div class="cut-corners">
+          <div class="section-head">
+            <div class="section-title">${cat.title}</div>
+            <p class="section-note">${cat.note || ""}</p>
+          </div>
+          <div class="items">
+            ${itemsHtml || `<div class="item"><p class="item-desc">No matches in this category.</p></div>`}
+          </div>
+        </div>
+      </section>
+    `;
+  }).join("");
+
+  // If every section is hidden, show a helpful message at top
+  const anyVisible = Array.from(menuMain.querySelectorAll(".section")).some(s => !s.classList.contains("is-hidden"));
+  if(!anyVisible){
+    menuMain.innerHTML = `
+      <section class="section">
+        <div class="cut-corners">
+          <div class="section-head">
+            <div class="section-title">No results</div>
+            <p class="section-note">Try a different search or clear filters.</p>
+          </div>
+          <div class="items">
+            <div class="item">
+              <p class="item-desc">Example searches: “pepperoni”, “garlic”, “brownie”.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+}
+
+function setActiveChip(filter){
+  chips.forEach(c => c.classList.toggle("active", c.dataset.filter === filter));
+}
+
+function applyFromUrl(){
+  const cat = getParam("cat");
+  const q = getParam("q");
+  const filter = getParam("filter") || "all";
+
+  if(q) searchInput.value = q;
+  setActiveChip(filter);
+
+  renderSidebar();
+  renderMenu({ q: normalize(q), filter });
+
+  if(cat){
+    // jump to category after render
+    setTimeout(() => {
+      const el = document.getElementById(cat);
+      if(el) el.scrollIntoView({behavior:"smooth", block:"start"});
+    }, 50);
+  }
+}
+
+/* Search */
+searchInput.addEventListener("input", () => {
+  const q = normalize(searchInput.value);
+  const active = (chips.find(c => c.classList.contains("active")) || chips[0]).dataset.filter;
+  renderMenu({ q, filter: active });
+});
+
+/* Filters */
+chips.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const filter = btn.dataset.filter;
+    setActiveChip(filter);
+    const q = normalize(searchInput.value);
+    renderMenu({ q, filter });
+  });
+});
+
+/* Init */
+(function init(){
+  // Default active chip
+  setActiveChip((getParam("filter") || "all"));
+  applyFromUrl();
+})();
+</script>
+
+</body>
+</html>
