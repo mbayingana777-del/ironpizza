@@ -14,6 +14,44 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
+  /* INGREDIENTS TRUST STRIP */
+.trust{
+  padding:0 0 80px;
+}
+.trust-grid{
+  padding:18px;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:14px;
+}
+.trust-item{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:14px;
+}
+.trust-item b{
+  display:block;
+  font-weight:950;
+  margin-bottom:6px;
+}
+.trust-item p{
+  margin:0;
+  color:var(--muted);
+  font-weight:700;
+  font-size:13px;
+  line-height:1.4;
+}
+.trust-note{
+  padding:0 18px 18px;
+  color:var(--muted);
+  font-weight:700;
+  font-size:12px;
+}
+@media(max-width:980px){
+  .trust-grid{grid-template-columns:1fr}
+}
+
 :root{
   --blue-bg:#eef3ff;
   --blue:#2455ff;
@@ -225,6 +263,48 @@ section{padding:80px 0}
 .cat-card:hover .img img{transform:scale(1.07)}
 .cat-card .label{padding:14px 14px 6px;font-size:26px;font-weight:950;color:var(--ink);}
 .cat-card .meta{padding:0 14px 16px;color:var(--muted);font-weight:700;font-size:13px;line-height:1.35;}
+<!-- ✅ INGREDIENT TRUST SECTION (under menu categories) -->
+<div class="trust" id="ingredients">
+  <div class="wrap">
+    <div class="shell">
+      <div class="shell-head">
+        <div class="shell-title">Ingredients you can trust</div>
+        <p class="shell-note">Simple standards. Consistent quality. No shortcuts.</p>
+      </div>
+
+      <div class="trust-grid" aria-label="Ingredient standards">
+        <div class="trust-item">
+          <b>Dough made daily</b>
+          <p>Fresh dough prep for better texture and flavor.</p>
+        </div>
+        <div class="trust-item">
+          <b>Real mozzarella</b>
+          <p>Whole-milk cheese for that legit melt and pull.</p>
+        </div>
+        <div class="trust-item">
+          <b>Fresh-cut toppings</b>
+          <p>Clean prep, balanced flavor, and better bites.</p>
+        </div>
+        <div class="trust-item">
+          <b>House sauce</b>
+          <p>Bright, savory sauce that doesn’t taste “canned.”</p>
+        </div>
+        <div class="trust-item">
+          <b>Allergen awareness</b>
+          <p>Ask us about dairy, gluten, and cross-contact info.</p>
+        </div>
+        <div class="trust-item">
+          <b>Quality control</b>
+          <p>Same standards every shift — lunch through late night.</p>
+        </div>
+      </div>
+
+      <div class="trust-note">
+        *Statements are template copy — customize to match what the kitchen actually does.
+      </div>
+    </div>
+  </div>
+</div>
 
 /* SOCIAL PROOF STRIP */
 .proof{
