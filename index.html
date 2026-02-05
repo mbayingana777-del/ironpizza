@@ -273,40 +273,131 @@ section{padding:64px 0}
   line-height:1.35;
 }
 
-/* ✅ INGREDIENT TRUST SECTION */
+/* =========================
+   CHIPOTLE-STYLE CUT CORNERS
+========================= */
+.cut-corners{
+  border:1px solid var(--line);
+  background:#fff;
+  clip-path: polygon(
+    14px 0%, calc(100% - 14px) 0%, 100% 14px,
+    100% calc(100% - 14px), calc(100% - 14px) 100%,
+    14px 100%, 0% calc(100% - 14px), 0% 14px
+  );
+}
+
+/* =========================
+   INGREDIENTS FEATURE PANEL
+   (left text + right video)
+========================= */
 .trust{
   padding:0 0 64px;
 }
-.trust-grid{
-  padding:18px;
+
+.trust-feature{
   display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:14px;
+  grid-template-columns: 1.05fr .95fr;
+  gap:0;
+  overflow:hidden; /* needed with clip-path edges */
 }
-.trust-item{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  padding:14px;
+
+.trust-left{
+  padding:34px 28px;
+  border-right:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-height:420px;
 }
-.trust-item b{
-  display:block;
-  font-weight:950;
-  margin-bottom:6px;
-  letter-spacing:-.01em;
+
+.trust-kicker{
+  font-family:Oswald, system-ui, sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:700;
+  font-size:14px;
+  color:var(--muted);
+  margin:0 0 10px;
 }
-.trust-item p{
-  margin:0;
+
+.trust-h{
+  font-family:Oswald, system-ui, sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  font-weight:800;
+  font-size:44px;
+  line-height:1.05;
+  margin:0 0 14px;
+}
+
+.trust-p{
+  margin:0 0 18px;
+  color:var(--ink);
+  font-weight:650;
+  font-size:16px;
+  line-height:1.6;
+  max-width:52ch;
+}
+
+.trust-bullets{
+  margin:0 0 22px;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:10px;
+  max-width:56ch;
+}
+.trust-bullets li{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
   color:var(--muted);
   font-weight:700;
   font-size:13px;
-  line-height:1.4;
+  line-height:1.45;
 }
+.trust-bullets li::before{
+  content:"■";
+  color:var(--accent);
+  line-height:1;
+  margin-top:2px;
+  font-size:10px;
+}
+
+.trust-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:6px;
+}
+
+/* Right side video */
+.trust-right{
+  position:relative;
+  min-height:420px;
+  background:#0b1220;
+}
+.trust-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.trust-right::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg, rgba(0,0,0,.10), rgba(0,0,0,.35));
+  pointer-events:none;
+}
+
 .trust-note{
-  padding:0 18px 18px;
   color:var(--muted);
-  font-weight:700;
+  font-weight:650;
   font-size:12px;
+  line-height:1.4;
 }
 
 /* SOCIAL PROOF STRIP */
@@ -436,10 +527,14 @@ footer{
   .nav{display:none}
   .right{min-width:auto}
   .category-grid{grid-template-columns:1fr}
-  .trust-grid{grid-template-columns:1fr}
   .ratings-grid{grid-template-columns:1fr}
   .cat-card .label{font-size:22px}
   .hero-content p{font-size:15px}
+
+  .trust-feature{grid-template-columns:1fr;}
+  .trust-left{border-right:none;border-bottom:1px solid var(--line);min-height:auto;}
+  .trust-right{min-height:260px;}
+  .trust-h{font-size:36px;}
 }
 </style>
 </head>
@@ -589,45 +684,51 @@ footer{
   </div>
 </section>
 
-<!-- ✅ INGREDIENT TRUST SECTION (under menu categories) -->
+<!-- ✅ INGREDIENT TRUST (Chipotle-style split: text left, video right) -->
 <div class="trust" id="ingredients">
   <div class="wrap">
-    <div class="shell">
-      <div class="shell-head">
-        <div class="shell-title">Ingredients you can trust</div>
-        <p class="shell-note">Simple standards. Consistent quality. No shortcuts.</p>
-      </div>
+    <div class="trust-feature cut-corners" aria-label="Ingredients you can trust">
 
-      <div class="trust-grid" aria-label="Ingredient standards">
-        <div class="trust-item">
-          <b>Dough made daily</b>
-          <p>Fresh dough prep for better texture and flavor.</p>
+      <div class="trust-left">
+        <p class="trust-kicker">Ingredients</p>
+        <h3 class="trust-h">Ingredients you can trust</h3>
+
+        <p class="trust-p">
+          Simple standards. Consistent quality. No shortcuts — just real prep and real flavor,
+          every day.
+        </p>
+
+        <ul class="trust-bullets" aria-label="Ingredient standards">
+          <li><b>Dough made daily</b> for better texture and bite.</li>
+          <li><b>Real mozzarella</b> for a clean melt and pull.</li>
+          <li><b>Fresh-cut toppings</b> for balanced flavor.</li>
+          <li><b>House sauce</b> that tastes bright — not canned.</li>
+          <li><b>Allergen awareness</b> — ask about dairy/gluten/cross-contact.</li>
+        </ul>
+
+        <div class="trust-actions">
+          <a class="pill primary" href="#categories">Order Now</a>
+          <a class="pill" href="menu.html">View Menu</a>
         </div>
-        <div class="trust-item">
-          <b>Real mozzarella</b>
-          <p>Whole-milk cheese for that legit melt and pull.</p>
-        </div>
-        <div class="trust-item">
-          <b>Fresh-cut toppings</b>
-          <p>Clean prep, balanced flavor, and better bites.</p>
-        </div>
-        <div class="trust-item">
-          <b>House sauce</b>
-          <p>Bright, savory sauce that doesn’t taste “canned.”</p>
-        </div>
-        <div class="trust-item">
-          <b>Allergen awareness</b>
-          <p>Ask us about dairy, gluten, and cross-contact info.</p>
-        </div>
-        <div class="trust-item">
-          <b>Quality control</b>
-          <p>Same standards every shift — lunch through late night.</p>
+
+        <div class="trust-note" style="padding:16px 0 0; margin:0;">
+          *Template copy — customize to match what the kitchen actually does.
         </div>
       </div>
 
-      <div class="trust-note">
-        *Statements are template copy — customize to match what the kitchen actually does.
+      <div class="trust-right">
+        <!-- Replace with your real file: assets/ingredients.mp4 -->
+        <video
+          class="trust-video"
+          src="assets/ingredients.mp4"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+        ></video>
       </div>
+
     </div>
   </div>
 </div>
